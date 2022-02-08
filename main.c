@@ -231,7 +231,7 @@ void difference_ordered_array(const int *a, const int *b, int *c) {
 void symmetricDifference_ordered_array(const int *a, const int *b, int *c) {
     int i = 1;
     int j = 1;
-    int count = c[0];
+    int count = 0;
     while (i <= a[0] || j <=b[0]) {
         if (j > b[0] || a[i] < b[j]) {
             count++;
@@ -242,8 +242,8 @@ void symmetricDifference_ordered_array(const int *a, const int *b, int *c) {
             c[count] = b[j];
             j++;
         } else {
-            i++;
             j++;
+            i++;
 }
     }
     c[0] = count;
