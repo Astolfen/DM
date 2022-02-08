@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <stdbool.h>
 
 #define MAX_ARRAY_SIZE_C 1001
@@ -230,23 +229,24 @@ void difference_ordered_array(const int *a, const int *b, int *c) {
 
 //v11
 void symmetricDifference_ordered_array(const int *a, const int *b, int *c) {
-    difference_ordered_array(a, b, c);
     int i = 1;
     int j = 1;
     int count = c[0];
-    while (i <= b[0]) {
-        if (j > a[0] || b[i] < a[j]) {
+    while (i <= a[0] || j <=b[0]) {
+        if (i > a[0] || a[i] < b[j]) {
             count++;
-            c[count] = b[i];
+            c[count] = a[i];
             i++;
-        } else if (a[i] == b[j]) {
+        } else if (j > b[0] || a[i] > b[j]) {
+            count++;
+            c[count] = b[j];
+            j++;
+        } else {
             i++;
             j++;
-        } else
-            j++;
+}
     }
     c[0] = count;
-    qsort(c + 1, c[0], sizeof(int), compare_ints);
 }
 
 //v12
